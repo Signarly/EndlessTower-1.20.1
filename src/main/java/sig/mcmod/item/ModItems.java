@@ -7,6 +7,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import  sig.mcmod.EndlessTower;
+
 public class ModItems {
     public static final Item HARDENED_BLUE_SLIME = registerItem("hardened_blue_slime", new Item(new Item.Settings()));
     public static final Item RAW_BLUE_SLIME = registerItem("raw_blue_slime", new Item(new Item.Settings()));
@@ -22,8 +23,6 @@ private static Item registerItem(String name, Item item) {
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> {
             entries.add(HARDENED_BLUE_SLIME);
-        });
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> {
             entries.add(RAW_BLUE_SLIME);
         });
 }
