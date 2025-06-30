@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "   ",
+    "###",
+    "   "
+  ],
+  "key": {
+    "#": {
+      "item": "endlesstower:raw_pink_slime"
+    }
+  },
+  "result": {
+    "item": "endlesstower:hardened_pink_slime",
+    "count": 1
+  }
+}

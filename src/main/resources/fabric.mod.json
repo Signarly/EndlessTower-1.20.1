@@ -1,6 +1,6 @@
 {
 	"schemaVersion": 1,
-	"id": "endless-tower",
+	"id": "endlesstower",
 	"version": "${version}",
 	"name": "Endless Tower",
 	"description": "This is a layered dungeon. Make it as far as you can!",
@@ -12,21 +12,21 @@
 		"sources": "https://github.com/FabricMC/fabric-example-mod"
 	},
 	"license": "MIT",
-	"icon": "assets/endless-tower/icon.png",
+	"icon": "assets/endlesstower/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"sig.mcmod.EndlessTower"
+			"sig.mcmod.endlesstower.EndlessTower"
 		],
 		"fabric-datagen": [
-			"sig.mcmod.EndlessTowerDataGenerator"
+			"sig.mcmod.endlesstower.EndlessTowerDataGenerator"
 		],
 		"client": [
-			"sig.mcmod.EndlessTowerClient"
+			"sig.mcmod.endlesstower.EndlessTowerClient"
 		]
 	},
 	"mixins": [
-		"endless-tower.mixins.json"
+		"endlesstower.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.16.14",

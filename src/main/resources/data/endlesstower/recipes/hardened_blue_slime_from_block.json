@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "endlesstower:blue_slime_block"
+    }
+  ],
+  "result": {
+    "item": "endlesstower:hardened_blue_slime",
+    "count": 9
+  }
+}

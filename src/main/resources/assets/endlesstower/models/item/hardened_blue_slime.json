@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "endlesstower:item/hardened_blue_slime"
+
+  }
+}

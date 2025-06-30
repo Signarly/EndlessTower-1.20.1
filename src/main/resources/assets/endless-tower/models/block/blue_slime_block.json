@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "endless-tower:block/blue_slime_block"
-  }
-}

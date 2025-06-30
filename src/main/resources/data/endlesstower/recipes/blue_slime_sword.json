@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    " # ",
+    " | "
+  ],
+  "key": {
+    "#": {
+      "item": "endlesstower:hardened_blue_slime"
+    },
+    "|": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "endlesstower:blue_slime_sword",
+    "count": 1
+  }
+}
