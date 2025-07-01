@@ -33,12 +33,9 @@ public class BlueCuteSlimeEntity extends SlimeEntity {
     protected void dropLoot(DamageSource source, boolean causedByPlayer) {
         super.dropLoot(source, causedByPlayer);
         this.dropItem(ModItems.RAW_BLUE_SLIME, this.random.nextBetween(1, 3));
-    }
-    @Override
-    protected void initGoals() {
-        this.goalSelector.add(1, new SwimGoal(this));
-        this.goalSelector.add(2, new LookAtEntityGoal(this, PlayerEntity.class, 6.0F));
-        this.goalSelector.add(3, new LookAroundGoal(this));
+        if (this.random.nextFloat() < 0.05f) {this.dropItem(ModItems.BLUE_SLIME_SWORD);}
+        if (this.random.nextFloat() < 0.01f) {this.dropItem(ModItems.BLUE_SLIME_CARD);}
+
     }
 
     @Override

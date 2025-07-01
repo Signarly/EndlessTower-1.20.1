@@ -1,15 +1,11 @@
 package sig.mcmod.endlesstower.entity.custom;
 
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.ai.goal.LookAroundGoal;
-import net.minecraft.entity.ai.goal.LookAtEntityGoal;
-import net.minecraft.entity.ai.goal.SwimGoal;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.mob.SlimeEntity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.world.World;
@@ -33,12 +29,8 @@ public class GreenCuteSlimeEntity extends SlimeEntity {
     protected void dropLoot(DamageSource source, boolean causedByPlayer) {
         super.dropLoot(source, causedByPlayer);
         this.dropItem(ModItems.RAW_GREEN_SLIME, this.random.nextBetween(1, 3));
-    }
-    @Override
-    protected void initGoals() {
-        this.goalSelector.add(1, new SwimGoal(this));
-        this.goalSelector.add(2, new LookAtEntityGoal(this, PlayerEntity.class, 6.0F));
-        this.goalSelector.add(3, new LookAroundGoal(this));
+        if (this.random.nextFloat() < 0.05f) {this.dropItem(ModItems.GREEN_SLIME_SWORD);}
+        if (this.random.nextFloat() < 0.01f) {this.dropItem(ModItems.GREEN_SLIME_CARD);}
     }
 
     @Override

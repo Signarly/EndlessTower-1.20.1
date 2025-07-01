@@ -24,6 +24,7 @@ import sig.mcmod.endlesstower.EndlessTower;
 import sig.mcmod.endlesstower.entity.custom.BlueCuteSlimeEntity;
 import sig.mcmod.endlesstower.entity.custom.GreenCuteSlimeEntity;
 import sig.mcmod.endlesstower.entity.custom.PinkCuteSlimeEntity;
+import sig.mcmod.endlesstower.entity.custom.PrismaticCuteSlimeEntity;
 
 public class ModEntities {
     public static final EntityType<BlueCuteSlimeEntity> BLUE_CUTE_SLIME =
@@ -47,13 +48,20 @@ public class ModEntities {
                             .dimensions(EntityDimensions.changing(1.0f, 1.0f))
                             .trackRangeBlocks(10).trackedUpdateRate(2).build());
 
+    public static final EntityType<PrismaticCuteSlimeEntity> PRISMATIC_CUTE_SLIME =
+            Registry.register(Registries.ENTITY_TYPE,
+                    new Identifier(EndlessTower.MOD_ID, "prismatic_cute_slime"),
+                    FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, PrismaticCuteSlimeEntity::new)
+                            .dimensions(EntityDimensions.changing(1.0f, 1.0f))
+                            .trackRangeBlocks(10).trackedUpdateRate(2).build());
+
     public static void registerModEntities() {
         EndlessTower.LOGGER.info("Registering Mod Entities for " + EndlessTower.MOD_ID);
 
         FabricDefaultAttributeRegistry.register(BLUE_CUTE_SLIME, BlueCuteSlimeEntity.createMobAttributes());
         FabricDefaultAttributeRegistry.register(PINK_CUTE_SLIME, PinkCuteSlimeEntity.createMobAttributes());
         FabricDefaultAttributeRegistry.register(GREEN_CUTE_SLIME, GreenCuteSlimeEntity.createMobAttributes());
-
+        FabricDefaultAttributeRegistry.register(PRISMATIC_CUTE_SLIME, PrismaticCuteSlimeEntity.createMobAttributes());
         // Cherry Grove biome key
         RegistryKey<Biome> cherryGrove = RegistryKey.of(RegistryKeys.BIOME, new Identifier("minecraft:cherry_grove"));
 
