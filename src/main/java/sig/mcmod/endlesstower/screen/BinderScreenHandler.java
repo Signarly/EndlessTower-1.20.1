@@ -23,28 +23,36 @@ public class BinderScreenHandler extends ScreenHandler {
         CardBinderItem.loadInventory(binderStack, this.inventory);
 
         // Binder inventory slots
-        // Row 1
-        for (int col = 0; col < 4; col++) {
-            this.addSlot(new Slot(inventory, col, 44 + col * 40, 40)); // adjust X/Y as needed
+        // Row 1 (slots 0–8)
+        for (int col = 0; col < 9; col++) {
+            this.addSlot(new Slot(inventory, col, 44 + col * 20, 40));
         }
-        // Row 2
-        for (int col = 0; col < 4; col++) {
-            this.addSlot(new Slot(inventory, col + 4, 44 + col * 40, 90));
+
+        // Row 2 (slots 9–17)
+        for (int col = 0; col < 9; col++) {
+            this.addSlot(new Slot(inventory, col + 9, 44 + col * 20, 60));
         }
+
+        // Row 3 (slots 18–26)
+        for (int col = 0; col < 9; col++) {
+            this.addSlot(new Slot(inventory, col + 18, 44 + col * 20, 80));
+        }
+
+
 
 
         // Player inventory slots (3 rows)
-        int startY = 84;
+        int startY = 140;
         for (int row = 0; row < 3; row++) {
             for (int col = 0; col < 9; col++) {
                 int index = col + row * 9 + 9;
-                this.addSlot(new Slot(playerInventory, index, 8 + col * 18, startY + row * 18));
+                this.addSlot(new Slot(playerInventory, index, 44 + col * 20, startY + row * 18));
             }
         }
 
         // Hotbar slots
         for (int col = 0; col < 9; col++) {
-            this.addSlot(new Slot(playerInventory, col, 8 + col * 18, startY + 58));
+            this.addSlot(new Slot(playerInventory, col, 44 + col * 20, startY + 58));
         }
     }
 

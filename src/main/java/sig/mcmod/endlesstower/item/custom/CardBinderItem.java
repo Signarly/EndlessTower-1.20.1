@@ -1,6 +1,7 @@
 package sig.mcmod.endlesstower.item.custom;
 
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.Inventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
@@ -34,30 +35,36 @@ public class CardBinderItem extends Item {
         return new TypedActionResult<>(ActionResult.SUCCESS, stack);
     }
 
-    public static void saveInventory(ItemStack stack, net.minecraft.inventory.Inventory inv) {
-        NbtList items = new NbtList();
+    public static void saveInventory(ItemStack stack, Inventory inv) {
+        NbtList itemList = new NbtList();
+
         for (int i = 0; i < inv.size(); i++) {
-            ItemStack slotStack = inv.getStack(i);
-            if (!slotStack.isEmpty()) {
+            ItemStack item = inv.getStack(i);
+            if (!item.isEmpty()) {
                 NbtCompound itemTag = new NbtCompound();
                 itemTag.putInt("Slot", i);
-                slotStack.writeNbt(itemTag);
-                items.add(itemTag);
+                item.writeNbt(itemTag);
+                itemList.add(itemTag);
             }
         }
+
         NbtCompound tag = stack.getOrCreateNbt();
-        tag.put("Items", items);
+        tag.put("Items", itemList);
     }
 
-    public static void loadInventory(ItemStack stack, net.minecraft.inventory.Inventory inv) {
-        NbtCompound tag = stack.getNbt();
-        if (tag == null || !tag.contains("Items")) return;
+    public static void loadInventory(ItemStack stack, Inventory inv) {
+        if (!stack.hasNbt()) return;
 
-        NbtList items = tag.getList("Items", NbtCompound.COMPOUND_TYPE);
-        for (int i = 0; i < items.size(); i++) {
-            NbtCompound itemTag = items.getCompound(i);
+        NbtCompound tag = stack.getNbt();
+        if (tag == null || !tag.contains("Items", NbtCompound.LIST_TYPE)) return;
+
+        NbtList itemList = tag.getList("Items", NbtCompound.COMPOUND_TYPE);
+        for (int i = 0; i < itemList.size(); i++) {
+            NbtCompound itemTag = itemList.getCompound(i);
             int slot = itemTag.getInt("Slot");
-            inv.setStack(slot, ItemStack.fromNbt(itemTag));
+            if (slot >= 0 && slot < inv.size()) {
+                inv.setStack(slot, ItemStack.fromNbt(itemTag));
+            }
         }
     }
 }
